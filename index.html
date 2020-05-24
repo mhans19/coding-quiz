@@ -8,25 +8,66 @@
 </head>
 <body>
     <header>
-        <h2>View high scores</h2>
-        <h3>Time: <span id = "countdown"></span></h3>
+        <button id = "scoresBtn">View High Scores</button>
+        <h2>Time Remaining: <span id = "countdown"></span></h3>
     </header>
     <main>
-        <section class = "intro">
-            <div class = "title" id= "title-elements">Code Quiz Challenge</div>
-            <div class = "secondary-title" id = "text-elements">You are about to take a quiz!</div>
+        <!-- high scores screen -->
+        <div class = "intro hide" id = "highScores">
+            <h1 class = "title">
+                High Scores:
+            </h1>
+            <ul class = "secondary-title" id = topFiveList>
+                
+            </ul>
+            <div class = "buttoncontainer">
+                <button class = "hide" id="back" type="submit">Go Home</button>
+            </div>
+        </div>
+        <!-- end high scores screen -->
+        <!-- instructions screen -->
+        <div class = "intro">
+            <h1 class = "title" id= "title-elements">
+                Code Quiz Challenge
+            </h1>
+            <h2 class = "secondary-title" id = "text-elements">
+                You are about to take a quiz!
+            </h2>
+            <!-- start button -->
             <div class = "buttoncontainer">
                 <button  id = "startquiz">Start Quiz</button>
             </div>
-        </section>
+        </div>
+        <!-- end instructions screen -->
+        <!-- question screen -->
         <div class = "quiz-questions">
-            <div class = "buttoncontainer hide-button" id = optionsEl>
+            <div class = "buttoncontainer hide" id = optionsEl>
                 <button id = "opt1"></button>
                 <button id = "opt2"></button>
                 <button id = "opt3"></button>
                 <button id = "opt4"></button>
             </div>
+            <div class = "validation hide" id = "validation">
+                <h1>message here!</h1>
+            </div>
         </div>
+        <!-- end question screen -->
+        <!-- results screen -->
+        <div class = "results">
+            <h1 class = "title hide" id= "endquiz">
+                Here are your Results!
+            </h1>
+            <h2 class = "secondary-title hide" id = "results">
+                Your Final Score: <span id = "score"></span> out of <span id = "qlength"></span>
+            </h2>
+            <form class = "hide" id = "initials">  
+                <input type="text" name="init_inpt" class = "input" placeholder="Enter Initials" />
+                <div>
+                    <button class="btn" id="sub_initials" type="submit">Submit Score</button>
+                </div>
+            </form>
+        </div>
+        <!-- end results screen -->
     </main> 
     <script src="./assets/js/script.js"></script>
 </body>

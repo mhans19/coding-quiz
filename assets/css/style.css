@@ -15,12 +15,14 @@ header {
     font-family: var(--default-font);
 
 }
-header h2 {
+header button {
     margin: 0;
     color: var(--light-purple);
     font-size: 16px;
+    border: none;
+    background-color: var(--white);
 }
-header h3 {
+header h2 {
     margin: 7px 0;
     font-size: 16px;
 }
@@ -61,6 +63,38 @@ header h3 {
     display: block;
     border-radius: 10px;
 }
-.hide-button {
+.hide {
     display: none;
+}
+.validation {
+    text-align: left;
+    font-size: 34px;
+    font-style: italic;
+    margin: 25px 525px;
+    font-family: var(--default-font);
+}
+form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 400px;
+}
+form input {
+    flex: 1;
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    border: 2px solid var(--dark-purple);
+    border-radius: 10px;
+}
+.btn {
+    flex:1;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-family: var(--default-font);
+    background-color: var(--dark-purple);
+    color: var(--white);
+    border-radius: 10px;
 }

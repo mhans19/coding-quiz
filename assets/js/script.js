@@ -7,7 +7,17 @@ var buttonEl2 = document.querySelector("#opt2");
 var buttonEl3 = document.querySelector("#opt3");
 var buttonEl4 = document.querySelector("#opt4");
 var startbtnEl = document.querySelector("#startquiz");
-var timeLeft = 120;
+var endquizEl = document.querySelector("#endquiz");
+var resultsEl = document.querySelector("#results");
+var initialsEl = document.querySelector("#initials");
+var validateEl = document.querySelector("#validation");
+var scoresBtnEl = document.querySelector("#scoresBtn")
+var highscoresEl = document.querySelector("#highScores");
+var backBtnEl = document.querySelector("#back");
+var subIntials = document.querySelector("#sub_initials");
+const maxStoredScores = 5;
+
+var timeLeft = 60;
 var score = 0;
 var questionIndex = 0;
 var questionOpts = [
@@ -56,13 +66,17 @@ var countdown = function(){
 
         if (timeLeft === -1) {
             countdownEl.textContent = "Times up!"
+            return endQuiz();
             clearInterval(timeInterval);
         }
     }, 1000)
 }
 
 var questionLoop = function(){
-    //add what to do when we run out of questions (end function with results + high score)
+    if(questionIndex == questionOpts.length){
+        return endQuiz();
+    }
+
     selectedOpt = questionOpts[questionIndex];
     titleEl.textContent = selectedOpt.q;
     buttonEl1.textContent = selectedOpt.a[0].opt;
@@ -71,71 +85,124 @@ var questionLoop = function(){
     buttonEl4.textContent = selectedOpt.a[3].opt;
 }
 
-// var questionLoop = function(questionIndex){
-//     for (var i = 0; i < questionOpts.length; i++){
-//         titleEl.textContent = questionOpts[i].q;
-//         buttonEl1.textContent = questionOpts[i].a[0].opt;
-//         buttonEl2.textContent = questionOpts[i].a[1].opt;
-//         buttonEl3.textContent = questionOpts[i].a[2].opt;
-//         buttonEl4.textContent = questionOpts[i].a[3].opt;
-
-//         break;
-//     }
-// }
-
 var nextQuestion = function(){
     questionIndex++;
     questionLoop();
 }
+
+var saveHighScores = function() {
+    const scorearray = {
+        userscore: score,
+        userinitials: document.querySelector("input").value
+    };
+    
+    const scoreHistory = JSON.parse(localStorage.getItem("storedScores")) || [];
+
+    scoreHistory.push(scorearray);
+    scoreHistory.sort((a, b)=> b.userscore - a.userscore);
+    scoreHistory.splice(5);
+
+    localStorage.setItem("storedScores", JSON.stringify(scoreHistory));
+    window.location.assign("/");
+}
+var highScores = function(){
+    titleEl.remove();
+    optionsEl.remove();
+    sectitleEl.remove();
+    startbtnEl.remove();
+    endquizEl.remove();
+    resultsEl.remove();
+    initialsEl.remove(0);
+    highscoresEl.classList.remove("hide");
+    backBtnEl.classList.remove("hide");
+
+    scoreHistory = JSON.parse(localStorage.getItem("storedScores")) || []; 
+    
+    topFiveList.innerHTML = scoreHistory
+        .map(scorearray => {
+            return `<li class = "secondary-title">${scorearray.userinitials}-${scorearray.userscore}</li>`;
+        })
+        .join("");
+}
+var endQuiz = function(){
+    countdownEl.classList.add("hide");
+    titleEl.classList.add("hide");
+    optionsEl.classList.add("hide");
+    endquizEl.classList.remove("hide");
+    resultsEl.classList.remove("hide");
+    initialsEl.classList.remove("hide");
+
+    document.querySelector("#score").textContent = score;
+    document.querySelector("#qlength").textContent = questionOpts.length;
+    
+}
+
+var refreshPage = function(){
+    window.parent.location = window.parent.location.href;
+}
+
 var runQuiz = function() {
     startbtnEl.remove();
     sectitleEl.remove();
     countdown();
-    optionsEl.classList.remove("hide-button");
+    optionsEl.classList.remove("hide");
     questionLoop();
 }
 
-///////////// need to add deduction from timeleft global variable
 buttonEl1.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[0].correct === true){
-        alert("You got this one right");
         score ++;
     } else {
-        alert("better luck next time");
+        timeLeft = timeLeft - 10;
+        if (timeLeft < 0){
+            countdownEl.textContent = "Times up!"
+            return endQuiz();
+        }
     }
     nextQuestion();
     });
 
 buttonEl2.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[1].correct === true){
-        alert("You got this one right");
         score ++;
     } else {
-        alert("better luck next time");
+        timeLeft = timeLeft - 10;
+        if (timeLeft < 0){
+            countdownEl.textContent = "Times up!"
+            return endQuiz();
+        }
     }
     nextQuestion();
     }); 
 
 buttonEl3.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[2].correct === true){
-        alert("You got this one right");
         score ++;
     } else {
-        alert("better luck next time");
+        timeLeft = timeLeft - 10;
+        if (timeLeft < 0){
+            countdownEl.textContent = "Times up!"
+            return endQuiz();
+        }
     }
     nextQuestion();
     }); 
 
 buttonEl4.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[3].correct === true){
-        alert("You got this one right");
         score ++;
     } else {
-        alert("better luck next time");
+        timeLeft = timeLeft - 10;
+        if (timeLeft < 0){
+            countdownEl.textContent = "Times up!"
+            return endQuiz();
+        }
     }
     nextQuestion();
     }); 
 
-
-
 startbtnEl.addEventListener("click", runQuiz);
+scoresBtnEl.addEventListener("click", highScores);
+backBtnEl.addEventListener("click", refreshPage);
+subIntials.addEventListener("click", saveHighScores);
+
