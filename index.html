@@ -11,15 +11,23 @@
         <h2>View high scores</h2>
         <h3>Time: <span id = "countdown"></span></h3>
     </header>
-    <section class = "quiz-questions">
-        <h1 id = "question-title"></h1>
-        <div class = "buttoncontainer">
-            <button id = "option-1">1</button>
-            <button id = "option-2">2</button>
-            <button id = "option-3">3</button>
-            <button id = "option-4">4</button>
+    <main>
+        <section class = "intro">
+            <div class = "title" id= "title-elements">Code Quiz Challenge</div>
+            <div class = "secondary-title" id = "text-elements">You are about to take a quiz!</div>
+            <div class = "buttoncontainer">
+                <button  id = "startquiz">Start Quiz</button>
+            </div>
+        </section>
+        <div class = "quiz-questions">
+            <div class = "buttoncontainer hide-button" id = optionsEl>
+                <button id = "opt1"></button>
+                <button id = "opt2"></button>
+                <button id = "opt3"></button>
+                <button id = "opt4"></button>
+            </div>
         </div>
-    </section>
+    </main> 
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
