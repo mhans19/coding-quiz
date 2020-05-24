@@ -66,6 +66,9 @@ header h2 {
 .hide {
     display: none;
 }
+.quiz-questions{
+    display: block;
+}
 .validation {
     text-align: left;
     font-size: 34px;
@@ -90,6 +93,38 @@ form input {
 }
 .btn {
     flex:1;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-family: var(--default-font);
+    background-color: var(--dark-purple);
+    color: var(--white);
+    border-radius: 10px;
+}
+.high-scores {
+    margin: 5px auto;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+#topFiveList {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+    font-size: 22px;
+    text-align: center;
+    font-family: var(--default-font);
+}
+.HSbtncontainer {
+    text-align: center;
+    display: flex;
+    margin: 0px 550px;
+}
+.HSbtncontainer button {
+    flex: 1;
+    flex-wrap: wrap;
     padding: 10px;
     cursor: pointer;
     font-size: 24px;

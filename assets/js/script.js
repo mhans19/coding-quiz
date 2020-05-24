@@ -10,11 +10,14 @@ var startbtnEl = document.querySelector("#startquiz");
 var endquizEl = document.querySelector("#endquiz");
 var resultsEl = document.querySelector("#results");
 var initialsEl = document.querySelector("#initials");
-var validateEl = document.querySelector("#validation");
 var scoresBtnEl = document.querySelector("#scoresBtn")
 var highscoresEl = document.querySelector("#highScores");
 var backBtnEl = document.querySelector("#back");
+var clearBtnEl = document.querySelector("#clear");
 var subIntials = document.querySelector("#sub_initials");
+var optionsEl = document.querySelector("#optionsEl");
+var validateEl = document.querySelector("#validation");
+
 const maxStoredScores = 5;
 
 var timeLeft = 60;
@@ -66,8 +69,7 @@ var countdown = function(){
 
         if (timeLeft === -1) {
             countdownEl.textContent = "Times up!"
-            return endQuiz();
-            clearInterval(timeInterval);
+            endQuiz();
         }
     }, 1000)
 }
@@ -76,7 +78,6 @@ var questionLoop = function(){
     if(questionIndex == questionOpts.length){
         return endQuiz();
     }
-
     selectedOpt = questionOpts[questionIndex];
     titleEl.textContent = selectedOpt.q;
     buttonEl1.textContent = selectedOpt.a[0].opt;
@@ -103,8 +104,13 @@ var saveHighScores = function() {
     scoreHistory.splice(5);
 
     localStorage.setItem("storedScores", JSON.stringify(scoreHistory));
-    window.location.assign("/");
+    highScores();
 }
+var clearStorage = function() {
+    localStorage.clear();
+    location.reload();
+}
+
 var highScores = function(){
     titleEl.remove();
     optionsEl.remove();
@@ -115,12 +121,13 @@ var highScores = function(){
     initialsEl.remove(0);
     highscoresEl.classList.remove("hide");
     backBtnEl.classList.remove("hide");
+    clearBtnEl.classList.remove("hide");
 
     scoreHistory = JSON.parse(localStorage.getItem("storedScores")) || []; 
     
     topFiveList.innerHTML = scoreHistory
         .map(scorearray => {
-            return `<li class = "secondary-title">${scorearray.userinitials}-${scorearray.userscore}</li>`;
+            return `<li id = "topFiveList"><b>User:</b> ${scorearray.userinitials} <b>Score:</b> ${scorearray.userscore}</li>`;
         })
         .join("");
 }
@@ -134,7 +141,6 @@ var endQuiz = function(){
 
     document.querySelector("#score").textContent = score;
     document.querySelector("#qlength").textContent = questionOpts.length;
-    
 }
 
 var refreshPage = function(){
@@ -152,11 +158,13 @@ var runQuiz = function() {
 buttonEl1.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[0].correct === true){
         score ++;
+        validateEl.textContent = "Correct!";
     } else {
         timeLeft = timeLeft - 10;
+        validateEl.textContent = "Wrong!";
         if (timeLeft < 0){
             countdownEl.textContent = "Times up!"
-            return endQuiz();
+            endQuiz();
         }
     }
     nextQuestion();
@@ -165,8 +173,10 @@ buttonEl1.addEventListener("click", function() {
 buttonEl2.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[1].correct === true){
         score ++;
+        validateEl.textContent = "Correct!";
     } else {
         timeLeft = timeLeft - 10;
+        validateEl.textContent = "Wrong!";
         if (timeLeft < 0){
             countdownEl.textContent = "Times up!"
             return endQuiz();
@@ -178,8 +188,10 @@ buttonEl2.addEventListener("click", function() {
 buttonEl3.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[2].correct === true){
         score ++;
+        validateEl.textContent = "Correct!";
     } else {
         timeLeft = timeLeft - 10;
+        validateEl.textContent = "Wrong!";
         if (timeLeft < 0){
             countdownEl.textContent = "Times up!"
             return endQuiz();
@@ -191,8 +203,10 @@ buttonEl3.addEventListener("click", function() {
 buttonEl4.addEventListener("click", function() {
     if (questionOpts[questionIndex].a[3].correct === true){
         score ++;
+        validateEl.textContent = "Correct!";
     } else {
         timeLeft = timeLeft - 10;
+        validateEl.textContent = "Wrong!";
         if (timeLeft < 0){
             countdownEl.textContent = "Times up!"
             return endQuiz();
@@ -205,4 +219,5 @@ startbtnEl.addEventListener("click", runQuiz);
 scoresBtnEl.addEventListener("click", highScores);
 backBtnEl.addEventListener("click", refreshPage);
 subIntials.addEventListener("click", saveHighScores);
+clearBtnEl.addEventListener("click", clearStorage);
 

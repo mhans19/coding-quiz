@@ -13,15 +13,17 @@
     </header>
     <main>
         <!-- high scores screen -->
-        <div class = "intro hide" id = "highScores">
+        <div class = "high-scores hide" id = "highScores">
             <h1 class = "title">
-                High Scores:
+                Top 5: High Scores
             </h1>
-            <ul class = "secondary-title" id = topFiveList>
-                
+            <ul id = topFiveList>
             </ul>
-            <div class = "buttoncontainer">
-                <button class = "hide" id="back" type="submit">Go Home</button>
+            <div class = "HSbtncontainer hide">
+                <button id="clear" type="submit">Clear High Scores</button>
+            </div>
+            <div class = "HSbtncontainer hide">
+                <button id="back" type="submit">Go Home</button>
             </div>
         </div>
         <!-- end high scores screen -->
@@ -41,15 +43,15 @@
         <!-- end instructions screen -->
         <!-- question screen -->
         <div class = "quiz-questions">
-            <div class = "buttoncontainer hide" id = optionsEl>
+            <div class = "buttoncontainer hide" id = "optionsEl">
                 <button id = "opt1"></button>
                 <button id = "opt2"></button>
                 <button id = "opt3"></button>
                 <button id = "opt4"></button>
             </div>
-            <div class = "validation hide" id = "validation">
-                <h1>message here!</h1>
+            <div class = "validation" id = "validation">
             </div>
+            
         </div>
         <!-- end question screen -->
         <!-- results screen -->
