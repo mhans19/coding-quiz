@@ -155,3 +155,25 @@ form input {
     background-color: var(--pink);
 }
 /* end hover styling */
+/* start media */
+@media screen and (max-width: 980px) {
+    .title {
+        margin: 25px 50px;
+    }
+    .secondary-title {
+        margin: 25px 50px;
+    }
+    .buttoncontainer {
+        margin: 5px 25px;
+    }
+    .validation {
+        font-size: 14px;
+        margin: 25px 50px;
+    }
+    .HSbtncontainer {
+        margin: 0px 30px;
+    }
+    form {
+        margin: 10px 100px;
+    }
+  }
