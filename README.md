@@ -31,4 +31,4 @@ WHEN the game is over<br>
 THEN I can save my initials and score<br>
 <br>
 # Screenshot of WebPage <br>
-![Image description](./assets/images/screenshot.png)
+![WebPage Screenshot](./assets/images/screenshot.png?raw=true)
