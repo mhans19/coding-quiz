@@ -1,10 +1,12 @@
+/* set root variables */
 :root{
     --light-purple: #d89ff2;
     --dark-purple: #351c75;
+    --pink: #d89ff2;
     --white: white;
     --default-font: arial;
 }
-
+/* start header styling */
 header {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -13,7 +15,6 @@ header {
     position: sticky;
     position: -webkit-sticky;
     font-family: var(--default-font);
-
 }
 header button {
     margin: 0;
@@ -26,6 +27,8 @@ header h2 {
     margin: 7px 0;
     font-size: 16px;
 }
+/* end header styling */
+/* start main styling */
 .intro {
     margin: 5px auto;
     width: 100%;
@@ -39,24 +42,25 @@ header h2 {
     text-align: center;
     font-size: 34px;
     font-weight: 700;
-    margin: 25px 500px;
+    margin: 25px 300px;
     font-family: var(--default-font);
 }
 .secondary-title {
     text-align: center;
     font-size: 28px;
     font-weight: 400;
-    margin: 25px 500px;
+    margin: 25px 150px;
     font-family: var(--default-font);
 }
 .buttoncontainer {
     text-align: center;
-    margin: 10px 500px;
+    margin: 5px 500px;
 }
 .buttoncontainer button {
     padding: 10px;
     cursor: pointer;
     font-size: 24px;
+    width: 500px;
     font-family: var(--default-font);
     background-color: var(--dark-purple);
     color: var(--white);
@@ -71,9 +75,12 @@ header h2 {
 }
 .validation {
     text-align: left;
-    font-size: 34px;
+    border-top: .5px solid grey;
+    font-size: 16px;
+    font-weight: lighter;
     font-style: italic;
     margin: 25px 525px;
+    color: grey;
     font-family: var(--default-font);
 }
 form {
@@ -133,3 +140,18 @@ form input {
     color: var(--white);
     border-radius: 10px;
 }
+/* end main styling */
+/* start hover styling */
+.HSbtncontainer button:hover {
+    background-color: var(--pink);
+}
+.buttoncontainer button:hover {
+    background-color: var(--pink);
+}
+.HSbtncontainer:hover {
+    background-color: var(--pink);
+}
+.btn:hover {
+    background-color: var(--pink);
+}
+/* end hover styling */

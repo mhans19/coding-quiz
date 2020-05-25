@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
+    <!-- link to stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
+    <!-- begin header -->
     <header>
         <button id = "scoresBtn">View High Scores</button>
         <h2>Time Remaining: <span id = "countdown"></span></h3>
     </header>
+    <!-- end header -->
     <main>
-        <!-- high scores screen -->
+        <!-- begin high scores screen -->
         <div class = "high-scores hide" id = "highScores">
             <h1 class = "title">
                 Top 5: High Scores
             </h1>
-            <ul id = topFiveList>
-            </ul>
+            <ul id = topFiveList></ul>
             <div class = "HSbtncontainer hide">
                 <button id="clear" type="submit">Clear High Scores</button>
             </div>
@@ -27,13 +29,13 @@
             </div>
         </div>
         <!-- end high scores screen -->
-        <!-- instructions screen -->
+        <!-- begin instructions screen -->
         <div class = "intro">
             <h1 class = "title" id= "title-elements">
-                Code Quiz Challenge
+                Coding Quiz Challenge
             </h1>
             <h2 class = "secondary-title" id = "text-elements">
-                You are about to take a quiz!
+                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
             </h2>
             <!-- start button -->
             <div class = "buttoncontainer">
@@ -41,7 +43,7 @@
             </div>
         </div>
         <!-- end instructions screen -->
-        <!-- question screen -->
+        <!-- begin question screen -->
         <div class = "quiz-questions">
             <div class = "buttoncontainer hide" id = "optionsEl">
                 <button id = "opt1"></button>
@@ -49,12 +51,15 @@
                 <button id = "opt3"></button>
                 <button id = "opt4"></button>
             </div>
-            <div class = "validation" id = "validation">
+            <div class = "validation hide" id = "valid-correct">
+                <h1>Correct!</h1>
             </div>
-            
+            <div class = "validation hide" id = "valid-wrong">
+                <h1>Wrong!</h1>
+            </div>
         </div>
         <!-- end question screen -->
-        <!-- results screen -->
+        <!-- begin results screen -->
         <div class = "results">
             <h1 class = "title hide" id= "endquiz">
                 Here are your Results!
@@ -71,6 +76,7 @@
         </div>
         <!-- end results screen -->
     </main> 
+    <!-- link to script.js -->
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
